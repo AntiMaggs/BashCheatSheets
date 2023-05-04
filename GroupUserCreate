@@ -1,0 +1,14 @@
+#!/bin/bash
+#run at Root; creates a new group, a new user for that group, and makes a home directory in the root directory home
+echo "Please enter group name:"
+read GROUPNAME
+if grep -w "$GROUPNAME" /etc/group/;
+  then echo "Name taken, try another one
+else groupadd $GROUPNAME;
+fi
+echo "Please enter a new username:"
+read USERNAME
+if grep -w "$USERNAME" /etc/passwd;
+then echo "Name taken"
+else useradd -g $GROUPNAME $USERNAME; passwd $USERNAME; mkdir /home/$USERNAME
+fi
