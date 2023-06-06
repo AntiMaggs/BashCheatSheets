@@ -1,0 +1,17 @@
+#!/bin/bash
+#Convert Hex to ASCII by the way of user input
+#Done in a way where you enter each hex line by line
+#I use this with assembly where I see the cmp al values line by line
+echo "Enter hex codes line by line, then enter "DONE" to print the final result"
+lines=()
+INPUT=""
+while [[ "$INPUT" != "DONE" ]]; do 
+	read -p "Enter hex (or DONE to finish): " INPUT
+	if [[ "$INPUT" != "DONE" ]]; then
+		ascii=$(echo -e '\x'"$INPUT"'')
+		lines+=("$ascii")
+	fi
+done 
+#combination time!
+combined_lines=$(printf "%s" "${lines[@]}")
+echo "Converted: $combined_lines"
