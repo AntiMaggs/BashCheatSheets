@@ -2,8 +2,8 @@
 #run at Root; creates a new group, a new user for that group, and makes a home directory in the root directory home
 echo "Please enter group name:"
 read GROUPNAME
-if grep -w "$GROUPNAME" /etc/group/;
-  then echo "Name taken, try another one
+if grep -w "$GROUPNAME" /etc/group;
+  then echo "Name taken, try another one"
 else groupadd $GROUPNAME;
 fi
 echo "Please enter a new username:"
